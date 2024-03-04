@@ -30,7 +30,7 @@ stato: "1"
 > $$A \cdot {}^t(\operatorname{cof} A) = \det A \cdot \mathbb{1}_n $$
 > (questa vale *sempre*!)
 > In particolare set $\det A = 0$ vale che
-> $$A^{-1} = \frac{{}^t \operatorname{cof}(A)}{\det A} $$
+> $$A^{-1} = \frac{ {}^t \operatorname{cof}(A)}{\det A} $$
 ^70361d
 
 #Dimostrazione 
