@@ -279,7 +279,7 @@ Alla base di quanto visto prima, voglio calcolare $$\lim_{x \to 0}\frac{e^x-1}{x
 #Osservazione 
 > [!rmk] generalizzazione del corollario 7.5.
 Se invece ho $$\lim_{x \to 0}\frac{a^x-1}{x}, a>1$$
-*Idea.* Qui invece l'idea principale è di *cambiare le basi*, riconducendoci così al *corollario 7.5.*. Allora per cambiare la base di un'esponenziale possiamo considerare il seguente: $$g(x)^{f(x)} = e^{\ln(g(x)^{f(x)})}= e^{{f(x)}\ln (g(x))}, f(x)>0$$Dunque considerando $g(x) = a$, $f(x) = x$, abbiamo $$\lim_{x \to 0}\frac{e^{x\ln a}-1}{x} \stackrel{y=x \ln a}\implies \lim_{y \to 0}\frac{e^y-1}{\frac{y}{\ln a}} = \frac{e^y-1}{y}\cdot \ln a = e \cdot \ln a$$Dunque $$\boxed{\lim_{x \to 0}\frac{a^x-1}{x} = \ln a \cdot e}$$Infatti il *corollario 7.5.* ([[#^e516e3]]) è un *caso specifico* di questo con $a=e \implies \ln a = 1$.
+*Idea.* Qui invece l'idea principale è di *cambiare le basi*, riconducendoci così al *corollario 7.5.*. Allora per cambiare la base di un'esponenziale possiamo considerare il seguente: $$g(x)^{f(x)} = e^{\ln(g(x)^{f(x)})}= e^{ {f(x)}\ln (g(x))}, f(x)>0$$Dunque considerando $g(x) = a$, $f(x) = x$, abbiamo $$\lim_{x \to 0}\frac{e^{x\ln a}-1}{x} \stackrel{y=x \ln a}\implies \lim_{y \to 0}\frac{e^y-1}{\frac{y}{\ln a}} = \frac{e^y-1}{y}\cdot \ln a = e \cdot \ln a$$Dunque $$\boxed{\lim_{x \to 0}\frac{a^x-1}{x} = \ln a \cdot e}$$Infatti il *corollario 7.5.* ([[#^e516e3]]) è un *caso specifico* di questo con $a=e \implies \ln a = 1$.
 ## L'utilità dei limiti fondamentali
 #Osservazione 
 > [!rmk] generalizzazione dei limiti fondamentali con sostituzione di variabile
