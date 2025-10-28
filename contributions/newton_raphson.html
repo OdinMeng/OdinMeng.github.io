@@ -1,0 +1,89 @@
+<html>
+<head>
+    <title>OdinMeng's Website - Newton's Contributions on Numerical Analysis</title>
+    <script type="text/javascript" id="cookiebanner" src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"></script>
+</head>
+
+<body>
+    <h1>Il metodo di Newton-Raphson</h1>
+    <h2><a href="../index.html">Cliccare qui per tornare alla Home Page</a></h2>
+
+    <h2>Intro: Calcolo dei Zeri</h2>
+    <p>Uno dei problemi dell'<em>analisi numerica</em> consiste in approssimare
+    le radici delle funzioni reali e <em>"sufficientemente regolari"</em> in un dato intervallo, da un punto di vista numerico.</p>
+
+    <p> Questo problema ritrova molte applicazioni, tra cui nel <em>Machine Learning</em> con l'ottimizzazione vincolata, oppure nella <em>fisica</em>, nel <em>risk management</em>, nell'<em>analisi della stabilità</em> ed eccetera... </p>
+
+    <img src="https://people.duke.edu/~ccc14/sta-663-2020/_images/notebooks_S09A_Root_Finding_7_0.png">
+
+    <h2>Cenni Storici a Newton e Raphson</h2>
+
+    <p>Isaac Newton e Joseph Raphson furono due matematici inglesi attivi intorno alla seconda metà del XVII secolo, precisamente attorno agli anni 1660-1690. In quel periodo, la comunità matematica era profondamente impegnata nella ricerca di metodi efficaci per risolvere equazioni, soprattutto quelle di grado superiore, che rappresentavano una sfida importante per studiosi e ricercatori.</p>
+
+    <p>Newton, nel corso dei suoi studi, elaborò un innovativo metodo, noto come "metodo delle tangenti", con il quale riusciva ad affrontare e risolvere equazioni di terzo grado sfruttando l'approssimazione delle soluzioni attraverso la geometria e le proprietà delle curve. Tuttavia, Newton non pubblicò mai esplicitamente i dettagli completi del suo procedimento, lasciando questo suo importante contributo in gran parte inedito.</p>
+
+    <p>Fu Joseph Raphson che, comprendendo il valore e l'importanza di questo metodo, decise di portarlo alla luce. Così, nel 1690, Raphson pubblicò definitivamente il metodo in forma analitica, utilizzando esplicitamente il concetto matematico di derivata, ponendo così le basi per quello che oggi è universalmente noto come il "metodo di Newton-Raphson". Questa tecnica rappresenta ancora oggi uno strumento fondamentale nell'ambito dell'analisi numerica, ampiamente utilizzato per approssimare le radici delle equazioni, e testimonia la rilevanza duratura dell'intuizione originale di Newton e dell'opera divulgativa e analitica di Raphson.</p>
+
+
+    <img src="../images/newton_raphson.png">
+
+    <p><b>In sintesi:</b> Newton concetualizzò il metodo per primo e lo applicava ai problemi; dopodiché, fu Raphson a formalizzare il metodo e a renderlo pubblico.</p>
+
+
+    <h2>Il metodo di Newton-Raphson: Cenni all'algoritmo</h2>
+    <p>Concretamente, l'idea del metodo di Newton e Raphson consiste in approssimare la funzione con un suo approssimante lineare centrato in un certo punto iniziale, e individuare il suo zero. Dopodiché, si ripete lo stesso procedimento prendendo come il punto iniziale la radice trovata.</p>
+    <p>Sotto vi è una concettualizzazione animata dell'algoritmo:</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/NewtonIteration_Ani.gif" width="500">
+
+    <p>Adesso descriviamo il metodo da un punto di vista algoritmico, includendo anche le necessarie formalizzazioni matematiche</p>
+    <b>ALGORITMO</b> <em>(Newton-Raphson)</em>
+    <ul>
+    <li>Siano definiti in configurazione:</li>
+        <ul>
+            <li>x0: il punto iniziale</li>
+            <li>f: la funzione</li>
+            <li>f': la derivata della funzione</li>
+            <li>tol: la tolleranza numerica dell'algoritmo (quanto "vicino" può essere la soluzione)</li>
+            <li>itmax: il numero massimo di iterazioni da fare</li>
+        </ul>
+    <li>Sia xold = x0</li>
+    <li>Sia diff = tol+1</li>
+    <li>Finchè |diff|>tol e il numero di iterazioni siano minori di itmax:</li>
+        <ul>
+            <li>Valutare f in xold e chiamarlo fx. Se è 0 terminare l'algoritmo con soluzione xold</li>
+            <li>Valutare f' in xold e chiamarlo dfx. Se è 0 terminare l'algoritmo con errore</li>
+            <li>Sia dif = -(fx/dfx)</li>
+            <li>Sia xnew = xold+dif</li>
+            <li>Sia xold = xnew</li>
+            <li>Ripetere</li>
+        </ul>
+    <li>Terminare l'algoritmo tornando xold</li>
+    </ul>
+
+    <p>Questo è uno degli algoritmi più notevoli nel calcolo dei zeri. Elenchiamo alcuni dei suoi pregi e difetti:</p>
+
+    <b>PREGI</b>
+    <ul>
+        <li>
+            L'algoritmo è <em>"veloce"</em>, si dimostra che converge alla soluzione in velocità quadratica sotto delle <em>"condizioni regolari"</em>
+        </li>
+        <li>
+            L'algoritmo può essere generalizzato nel caso multidimensionale, fornendo delle applicazioni in ambiti più concreti come il <em>Machine Learning</em>
+        </li>
+        <li>
+            Richiede solo un punto iniziale, x0
+        </li>
+    </ul>
+
+    <b>DIFETTI</b>
+    <ul>
+        <li>Non è sempre garantita la convergenza. Infatti, dimostra che l'algoritmo converge solo localmente, ovvero per una scelta abbastanza <em>"sensibile"</em> di x0</li>
+        <li>Il costo computazionale della sua generalizzazione in più dimensioni è elevata, siccome richiede il calcolo delle inverse su matrici (che è in tempo cubico!) </li>
+        <li>Bisogna garantire che la derivata non si annulli, altrimenti l'algoritmo si <em>"sbaglia"</em></li>
+    </ul>
+
+    Per sopperire ai difetti citati sopra, sono sorti delle varianti dell'algoritmo di Newton e Raphson. Una famiglia notevole di questi algoritmi sono i <em>metodi "Quasi-Newton"</em>. Un esempio concreto di metodo Quasi-Newton è <a href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">LBFGS</a>, usato oggi nell'addestramento delle <em>reti neurali</em>
+
+</body>
+
+</html>
